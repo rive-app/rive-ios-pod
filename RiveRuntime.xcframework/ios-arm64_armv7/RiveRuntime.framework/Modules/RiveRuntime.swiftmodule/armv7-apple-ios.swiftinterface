@@ -66,13 +66,13 @@ public struct StateMachineInput : Swift.Hashable {
   weak public var stopDelegate: RiveRuntime.StopDelegate?
   weak public var inputsDelegate: RiveRuntime.InputsDelegate?
   weak public var stateChangeDelegate: RiveRuntime.StateChangeDelegate?
-  public init(riveFile: RiveRuntime.RiveFile, fit: RiveRuntime.Fit = .fitContain, alignment: RiveRuntime.Alignment = .alignmentCenter, autoplay: Swift.Bool = true, artboard: Swift.String? = nil, animation: Swift.String? = nil, stateMachine: Swift.String? = nil, loopDelegate: RiveRuntime.LoopDelegate? = nil, playDelegate: RiveRuntime.PlayDelegate? = nil, pauseDelegate: RiveRuntime.PauseDelegate? = nil, stopDelegate: RiveRuntime.StopDelegate? = nil, inputsDelegate: RiveRuntime.InputsDelegate? = nil, stateChangeDelegate: RiveRuntime.StateChangeDelegate? = nil)
+  public init(riveFile: RiveRuntime.RiveFile, fit: RiveRuntime.Fit = .fitContain, alignment: RiveRuntime.Alignment = .alignmentCenter, autoplay: Swift.Bool = true, artboard: Swift.String? = nil, animation: Swift.String? = nil, stateMachine: Swift.String? = nil, loopDelegate: RiveRuntime.LoopDelegate? = nil, playDelegate: RiveRuntime.PlayDelegate? = nil, pauseDelegate: RiveRuntime.PauseDelegate? = nil, stopDelegate: RiveRuntime.StopDelegate? = nil, inputsDelegate: RiveRuntime.InputsDelegate? = nil, stateChangeDelegate: RiveRuntime.StateChangeDelegate? = nil) throws
   @objc dynamic public init()
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
 }
 extension RiveView : RiveRuntime.RiveFileDelegate {
-  @objc dynamic public func riveFileDidLoad(_ riveFile: RiveRuntime.RiveFile)
+  @objc dynamic public func riveFileDidLoad(_ riveFile: RiveRuntime.RiveFile) throws
 }
 extension RiveView {
   open var fit: RiveRuntime.Fit {
@@ -86,12 +86,12 @@ extension RiveView {
   open var artboard: RiveRuntime.RiveArtboard? {
     get
   }
-  open func configure(_ riveFile: RiveRuntime.RiveFile, andArtboard artboard: Swift.String? = nil, andAnimation animation: Swift.String? = nil, andStateMachine stateMachine: Swift.String? = nil, andAutoPlay autoPlay: Swift.Bool = true)
+  open func configure(_ riveFile: RiveRuntime.RiveFile, andArtboard artboard: Swift.String? = nil, andAnimation animation: Swift.String? = nil, andStateMachine stateMachine: Swift.String? = nil, andAutoPlay autoPlay: Swift.Bool = true) throws
   open func artboardNames() -> [Swift.String]
   open func animationNames() -> [Swift.String]
   open func stateMachineNames() -> [Swift.String]
   open func isArtboard(name: Swift.String) -> Swift.Bool
-  open func stateMachineInputs() -> [RiveRuntime.StateMachineInput]
+  open func stateMachineInputs() throws -> [RiveRuntime.StateMachineInput]
 }
 extension RiveView {
   open var isPlaying: Swift.Bool {
@@ -101,17 +101,17 @@ extension RiveView {
   open func advance(delta: Swift.Double)
 }
 extension RiveView {
-  public func reset(artboard: Swift.String? = nil, animation: Swift.String? = nil, stateMachine: Swift.String? = nil)
-  public func play(loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto)
-  public func play(animationName: Swift.String, loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto, isStateMachine: Swift.Bool = false)
-  public func play(animationNames: [Swift.String], loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto, isStateMachine: Swift.Bool = false)
+  public func reset(artboard: Swift.String? = nil, animation: Swift.String? = nil, stateMachine: Swift.String? = nil) throws
+  public func play(loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto) throws
+  public func play(animationName: Swift.String, loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto, isStateMachine: Swift.Bool = false) throws
+  public func play(animationNames: [Swift.String], loop: RiveRuntime.Loop = .loopAuto, direction: RiveRuntime.Direction = .directionAuto, isStateMachine: Swift.Bool = false) throws
   public func pause()
   public func pause(animationName: Swift.String, isStateMachine: Swift.Bool = false)
   public func pause(animationNames: [Swift.String], isStateMachine: Swift.Bool = false)
   public func stop()
   public func stop(animationName: Swift.String, isStateMachine: Swift.Bool = false)
   public func stop(animationNames: [Swift.String], isStateMachine: Swift.Bool = false)
-  open func fireState(_ stateMachineName: Swift.String, inputName: Swift.String)
-  open func setBooleanState(_ stateMachineName: Swift.String, inputName: Swift.String, value: Swift.Bool)
-  open func setNumberState(_ stateMachineName: Swift.String, inputName: Swift.String, value: Swift.Float)
+  open func fireState(_ stateMachineName: Swift.String, inputName: Swift.String) throws
+  open func setBooleanState(_ stateMachineName: Swift.String, inputName: Swift.String, value: Swift.Bool) throws
+  open func setNumberState(_ stateMachineName: Swift.String, inputName: Swift.String, value: Swift.Float) throws
 }

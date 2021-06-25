@@ -224,7 +224,7 @@ SWIFT_CLASS("_TtC11RiveRuntime8RiveView")
 @class RiveFile;
 
 @interface RiveView (SWIFT_EXTENSION(RiveRuntime)) <RiveFileDelegate>
-- (void)riveFileDidLoad:(RiveFile * _Nonnull)riveFile;
+- (BOOL)riveFileDidLoad:(RiveFile * _Nonnull)riveFile error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -468,7 +468,7 @@ SWIFT_CLASS("_TtC11RiveRuntime8RiveView")
 @class RiveFile;
 
 @interface RiveView (SWIFT_EXTENSION(RiveRuntime)) <RiveFileDelegate>
-- (void)riveFileDidLoad:(RiveFile * _Nonnull)riveFile;
+- (BOOL)riveFileDidLoad:(RiveFile * _Nonnull)riveFile error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -712,7 +712,7 @@ SWIFT_CLASS("_TtC11RiveRuntime8RiveView")
 @class RiveFile;
 
 @interface RiveView (SWIFT_EXTENSION(RiveRuntime)) <RiveFileDelegate>
-- (void)riveFileDidLoad:(RiveFile * _Nonnull)riveFile;
+- (BOOL)riveFileDidLoad:(RiveFile * _Nonnull)riveFile error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
