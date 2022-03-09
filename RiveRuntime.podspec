@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "RiveRuntime"
-  spec.version      = "1.0.8"
+  spec.version      = "1.0.9"
   spec.summary      = "iOS SDK to render Rive animations"
   spec.description  = "Rive is a real-time interactive design and animation tool. Use our collaborative editor to create motion graphics that respond to different states and user inputs. Then load your animations into apps, games, and websites with our lightweight open-source runtimes."
   spec.homepage     = "https://github.com/rive-app/rive-ios"
@@ -27,8 +27,8 @@ Pod::Spec.new do |spec|
     LICENSE
   }
   spec.authors = { "Luigi Rosso" => "luigi@rive.app" }
-  spec.platform               = :ios, '10.0'
-  spec.ios.deployment_target  = '10.0'
+  spec.platform               = :ios, '11.0'
+  spec.ios.deployment_target  = '11.0'
   spec.swift_version          = '5.0'
   spec.source       = { 
     :git => "https://github.com/rive-app/rive-ios-pod.git",
